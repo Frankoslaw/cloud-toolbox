@@ -21,8 +21,7 @@ spec:
                 protocol: TCP
         ingressRoute:
             dashboard:
-                enabled: true
-                domain: traefik.frankoslaw.top
+                enabled: false
         persistence:
             enabled: true
             path: /certs

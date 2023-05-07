@@ -8,7 +8,7 @@ spec:
     commonName: traefik.frankoslaw.top
     secretName: traefik.frankoslaw.top
     issuerRef:
-        name: letsencrypt-staging
+        name: letsencrypt-prod
         kind: ClusterIssuer
     dnsNames:
         - traefik.frankoslaw.top
@@ -20,7 +20,6 @@ metadata:
     namespace: default
 spec:
     entryPoints:
-        - web
         - websecure
     routes:
         - match: Host(`traefik.frankoslaw.top`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))
@@ -29,7 +28,7 @@ spec:
               - name: api@internal
                 kind: TraefikService
     tls:
-        certResolver: letsencrypt-staging
+        certResolver: letsencrypt-prod
         domains:
             - main: traefik.frankoslaw.top
         secretName: traefik.frankoslaw.top
