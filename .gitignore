@@ -3,3 +3,4 @@ ansible/inventory/**/*.yml
 !ansible/inventory/**/*.example.yml
 cloud-init/**/*.yml
 !cloud-init/**/*.example.yml
+secrets.md

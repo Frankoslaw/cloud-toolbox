@@ -19,6 +19,7 @@
             go # For pre-commit
             pre-commit
             gitleaks
+            fluxcd
           ];
 
           NIX_ENFORCE_PURITY = true;
