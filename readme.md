@@ -16,10 +16,10 @@ flux check --pre
 
 Setup flux
 ```sh
-flux bootstrap github \\
-    --owner=$GITHUB_USER \\
-    --repository=cloud-toolbox \\
-    --branch=main \\
-    --path=./clusters/contabo-personal-k3s \\
-    --personal
+flux bootstrap github \
+  --owner=$GITHUB_USER \
+  --repository=cloud-toolbox \
+  --branch=main \
+  --path=./clusters/contabo-personal-k3s \
+  --personal
 ```

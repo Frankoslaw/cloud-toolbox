@@ -20,6 +20,9 @@
             pre-commit
             gitleaks
             fluxcd
+            age
+            sops
+            kustomize-sops
           ];
 
           NIX_ENFORCE_PURITY = true;

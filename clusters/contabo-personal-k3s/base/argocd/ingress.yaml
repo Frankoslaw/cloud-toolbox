@@ -1,0 +1,20 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+    name: argocd-server
+    namespace: argocd
+spec:
+    routes:
+        - match: Host(`argocd.frankoslaw.top`)
+          priority: 10
+          kind: Rule
+          services:
+              - name: argocd-server
+                port: http
+        - match: Host(`argocd.frankoslaw.top`) && Header(`Content-Type`, `application/grpc`)
+          priority: 11
+          kind: Rule
+          services:
+              - name: argocd-server
+                port: http
+                scheme: h2c
