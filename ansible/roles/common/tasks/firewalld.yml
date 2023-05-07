@@ -19,3 +19,12 @@
     - 6443/tcp
     - 8472/udp
     - 10250/tcp
+- firewalld:
+    source: "{{ item }}"
+    zone: trusted
+    immediate: yes
+    permanent: true
+    state: enabled
+  with_items:
+    - 10.42.0.0/16
+    - 10.43.0.0/16
