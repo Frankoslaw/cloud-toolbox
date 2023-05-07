@@ -1,0 +1,17 @@
+---
+- name: Install cockpit
+  dnf:
+      update_cache: yes
+      pkg: cockpit
+      state: present
+- name: Enable cockpit in systemd
+  systemd:
+    name: cockpit.socket
+    state: started
+    enabled: true
+- name: Enable cockpit firewall rules
+  firewalld:
+    service: cockpit
+    state: enabled
+    permanent: true
+    immediate: true

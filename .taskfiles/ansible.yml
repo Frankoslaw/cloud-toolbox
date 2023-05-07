@@ -1,0 +1,40 @@
+---
+version: "3"
+
+env:
+    ANSIBLE_CONFIG: "{{.PROJECT_DIR}}/ansible.cfg"
+
+vars:
+    ANSIBLE_PLAYBOOK_DIR: "{{.ANSIBLE_DIR}}/playbooks"
+    ANSIBLE_INVENTORY_DIR: "{{.ANSIBLE_DIR}}/inventory"
+
+tasks:
+    list:
+        desc: List all the hosts
+        dir: ansible
+        cmds:
+            - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --list-hosts"
+
+    adhoc:ping:
+        desc: Ping all the hosts
+        dir: ansible
+        cmds:
+            - "ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -m 'ping'"
+
+    adhoc:uptime:
+        desc: Uptime of all the hosts
+        dir: ansible
+        cmds:
+            - ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml --one-line -a 'uptime'
+
+    adhoc:reboot:
+        desc: Reboot all the k3s nodes
+        dir: ansible
+        cmds:
+            - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl reboot' --become"
+
+    adhoc:poweroff:
+        desc: Shutdown all the k3s nodes
+        dir: ansible
+        cmds:
+            - "ansible kubernetes -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yml -a '/usr/bin/systemctl poweroff' --become"

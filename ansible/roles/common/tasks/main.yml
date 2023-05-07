@@ -1,0 +1,10 @@
+---
+- name: Initial nodes setup
+  include_tasks: "{{ item }}"
+  loop:
+      - hostname.yml
+      - timezone.yml
+      - user.yml
+      - fail2ban.yml
+      - ssh.yml
+      - firewalld.yml

@@ -1,0 +1,8 @@
+---
+- name: Initial fedora nodes setup
+  include_tasks: "{{ item }}"
+  loop:
+      - dnf.yml
+      - firewalld.yml
+      # - ufw.yml
+      - cockpit.yml

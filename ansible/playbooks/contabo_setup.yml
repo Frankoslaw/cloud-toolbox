@@ -1,0 +1,8 @@
+---
+- hosts: contabo
+  gather_facts: true
+  become: true
+  roles:
+      # - role: contabo-specific
+      # - role: fedora
+      - role: common

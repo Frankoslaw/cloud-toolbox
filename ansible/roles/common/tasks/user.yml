@@ -1,0 +1,6 @@
+---
+- name: Add user frankoslaw
+  user:
+      name: frankoslaw
+      group: sudo
+      createhome: yes

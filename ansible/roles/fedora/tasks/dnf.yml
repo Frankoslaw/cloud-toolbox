@@ -1,0 +1,25 @@
+---
+- name: Ensure that a base set of software packages are installed.
+  dnf:
+      update_cache: yes
+      pkg:
+          - "@Development Tools" 
+          - "@Development Libraries"
+          - curl
+          - git
+          - htop
+          - neofetch
+          - unzip
+          - firewalld
+      state: present
+- name: Upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+- name: Check if reboot required
+  stat:
+      path: /var/run/reboot-required
+  register: reboot_required_file
+- name: Reboot if required
+  reboot:
+  when: reboot_required_file.stat.exists == true

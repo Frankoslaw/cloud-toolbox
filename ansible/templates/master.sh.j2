@@ -1,0 +1,7 @@
+k3sup install \
+    --ip {{ansible_ssh_host}} \
+    --user {{ansible_user}} \
+    --k3s-version v1.27.1+k3s1 \
+    --context {{cluster_name}} \
+    --merge \
+    --local-path $HOME/.kube/config

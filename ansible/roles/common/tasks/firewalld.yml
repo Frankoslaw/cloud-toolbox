@@ -1,0 +1,21 @@
+---
+- name: FirewallD rules
+  firewalld:
+    permanent: yes
+    immediate: yes
+    service: "{{ item }}"
+    state: enabled
+  with_items:
+    - ssh
+    - http
+    - https
+- name: FirewallD rules( ports )
+  firewalld:
+    permanent: yes
+    immediate: yes
+    port: "{{ item }}"
+    state: enabled
+  with_items:
+    - 6443/tcp
+    - 8472/udp
+    - 10250/tcp

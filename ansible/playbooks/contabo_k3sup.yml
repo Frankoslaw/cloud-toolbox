@@ -1,0 +1,15 @@
+---
+- hosts: contabo
+  gather_facts: true
+  tasks:
+    # TODO: Skip if already installed
+    - shell: "{{ lookup('template', '../templates/master.sh.j2') }}"
+      delegate_to: localhost
+      when: k3sup and master
+    - name: Enable kubernetes api firewall rule
+      firewalld:
+        port: 6443/tcp
+        state: enabled
+        permanent: true
+        immediate: true
+      become: true

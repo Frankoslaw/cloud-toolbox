@@ -1,0 +1,5 @@
+---
+- name: Initial contabo nodes setup
+  include_tasks: "{{ item }}"
+  loop:
+      - configure-admin.yml

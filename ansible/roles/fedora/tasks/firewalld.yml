@@ -1,0 +1,11 @@
+---
+- name: Install firewalld
+  dnf:
+      update_cache: yes
+      pkg: firewalld
+      state: present
+- name: Enable firewall in systemd
+  systemd:
+    name: firewalld
+    state: started
+    enabled: true
